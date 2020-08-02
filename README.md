@@ -3,7 +3,9 @@
 <label>Steps before starting CLI</label>
 <ol>
     <li>See if I can send the time with the API</li>
-    <li>I can use SoQL to the query I need.</li>
+    <li>Ensure comparison of string 'start24' and 'end24' is working properly.</li>
+    <li>Get the day of week and convert it into 'dayorder' key.</li>
+    <li>Get time from user and convert it into 24 hour code.</li>
 </ol>
 <code>
 https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 >= \USERINPUTTIME\ AND end24 <= \USERINPUTTIME\ 
@@ -29,3 +31,6 @@ https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 >= \USERINPUTTIME\
     <li>Sort alphabetically by the name.</li>
     <li>Display name and address.</li>
 </ul>
+
+<h1>Issues with Gems.</h1>
+I ran into an issue with the minitest gem, a dependency of Active Support. I had to run <code>bundle clean --force</code> in my terminal to move past this issue.

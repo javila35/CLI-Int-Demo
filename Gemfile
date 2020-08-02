@@ -12,3 +12,5 @@ gem 'tty-prompt'
 
 # API fetch library
 gem 'httparty'
+
+gem 'activesupport'
