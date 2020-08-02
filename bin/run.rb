@@ -2,8 +2,11 @@
 require 'tty-prompt'
 require 'httparty'
 require 'active_support/core_ext/time'
-require 'pry'
 require 'json'
+
+# Declare initial Prompt and question
+prompt = TTY::Prompt.new
+question = prompt.yes?("Would you like to see more info?")
 
 # Grab local machine's time and convert to Pacific time zone.
 time = Time.now;
@@ -17,19 +20,38 @@ end
 hour = time.strftime("%H:%M");
 day = time.strftime("%A");
 
-
+# Fetch all data from API. Cycle through in the following lines.
 response = HTTParty.get("https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 <= '#{hour}' AND end24 >= '#{hour}' AND dayofweekstr = '#{day}'")
-# Trucks is an array of the entire response.
-# Current is where I'll store the 10 to display at a time.
 trucks = JSON[response.body].sort_by{ |truck| truck['applicant'].to_s }
-current = trucks.first(10)
-displayTrucks = current.map do |truck|
-    truck.fetch_values("applicant", "location")
+
+# Current is where I'll store the 10 to display at a time.
+# current = trucks.first(10)
+# displayTrucks = current.map do |truck|
+#     truck.fetch_values("applicant", "location")
+# end
+# trucks = trucks.shift(10)
+
+while trucks.length > 0 do
+    current = trucks.first(10)
+    trucks = trucks.shift(10)
+    displayTrucks = current.map do |truck|
+        truck.fetch_values("applicant", "location")
+    end
+    question
+    if question
+        puts displayTrucks
+        current = trucks.first(10)
+        displayTrucks = current.map do |truck|
+            truck.fetch_values("applicant", "location")
+        end
+        trucks = trucks.shift(10)
+    else
+        puts "Thanks!"
+        trucks = []
+    end
 end
-puts displayTrucks
 
 
-# puts response.message
-# prompt = TTY::Prompt.new
+
 # question = prompt.ask("What's your name?")
 
