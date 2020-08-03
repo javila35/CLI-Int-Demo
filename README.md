@@ -1,7 +1,8 @@
 # Food Truck CLI
 
 # Next Steps
-- [ ] Break run.rb into models w/ methods.
+- [ ] Break run.rb into models w/ methods. **Almost done**
+    - [ ] Add a convert method to Chunks that turns each entry into it's own truck.
 - [ ] Finish documentation of current build.
 - [ ] Write up about building this into a fleshed out website.
 - [ ] Include contributions (gems) in Readme.

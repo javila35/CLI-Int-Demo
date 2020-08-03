@@ -12,4 +12,8 @@ gem 'httparty'
 # Added for time zone support.
 gem 'activesupport'
 
+# Text color for CLI.
 gem 'rainbow'
+
+# Helper for my environment file.
+gem "require_all"
