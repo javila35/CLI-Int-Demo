@@ -1,13 +1,15 @@
-# dependency source file.
 source "https://rubygems.org"
 
 # Scripts
 gem 'rake'
 
-# Clean user interface
+# Clean CLI user interface
 gem 'tty-prompt'
 
-# API fetch library
+# fetch library. Simplify logic of good or bad API request.
 gem 'httparty'
 
+# Added for time zone support.
 gem 'activesupport'
+
+gem 'rainbow'

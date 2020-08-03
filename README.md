@@ -1,38 +1,24 @@
-# Food Truck Display
+# Food Truck CLI
 
-## Steps before starting CLI
+# Next Steps
+- [ ] Break run.rb into models w/ methods.
+- [ ] Finish documentation of current build.
+- [ ] Write up about building this into a fleshed out website.
+- [ ] Include contributions (gems) in Readme.
 
-- [x] I can send the time with the API 
-- [x] Ensure comparison of string 'start24' and 'end24' is working properly. 
-- [x] Get the day of week and convert it into 'dayorder' key. 
-- [x] Get time from user, convert it into 24 hour code and PDT time zone. 
+## Using this CLI
+1. Make sure you have Ruby installed. Find more information [here](https://www.ruby-lang.org/en/documentation/installation/).
+2. Navigate to RedFin directory.
+3. From your terminal:
+    - Run `bundle` to install gem dependencies
+    - Run `rake start` to begin CLI
+    - Follow prompts
 
+## Before starting
+Before writing any code, I read about the Socrates API. I figure the best way to handle the data is to start at the source. While reading through Socrates documentation I made a plan to get the user's time and use that in my query to the API. Since my API query relies on the users local time, I had to ensure the timezones matched. If the user was planning ahead, and using this CLI from a different area, I want to return accurate results.
 
 ```
-https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 >= \USERINPUTTIME\ AND end24 <= \USERINPUTTIME\
+https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 >= '\USERINPUTTIME\' AND end24 <= '\USERINPUTTIME\' AND dayofweekstr = '#{day}'
 ```
 
-
-## Edgecases
-
-- [ ] What if their in a different time zone? 
-- [ ] What if the request isn't 200? 
-
-
-## the CLI
-
-- [ ] Welcome user 
-- [ ] Use chalk / rainbow gem to display information from the API 
-- [ ] Display some error handling if the request fails for some reason. 
-
-
-## Limitations
-
-- [ ] Display 10 results at a time. 
-- [ ] Ask if user wants to see more, then display more.  
-- [x] Sort alphabetically by the name. 
-- [ ] Display name and address. 
-
-
-# Issues with Gems.
-I ran into an issue with the minitest gem, a dependency of Active Support. I had to run <code>bundle clean --force</code> in my terminal to move past this issue.
+Once I had the data, I broke it down into smaller chunks to display to the user. 
