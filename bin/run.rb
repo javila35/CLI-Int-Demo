@@ -1,30 +1,29 @@
 require_relative '../config/environment';
 
-# Declare shortcut variables.
 prompt = TTY::Prompt.new;
-chunks = Chunks.all
+response = Client.new.api_call
 
-if chunks.length == 0 
-    puts Rainbow("Currently no trucks are open.").red;
-elsif chunks.length == 1
-    puts Rainbow("Trucks currently open: ").underline;
-    Chunks.showChunk(0).each do |truck|
-        Chunks.convert(truck)
-    end
-else
-    i =  0;
-    until i >= chunks.length do
-        puts Rainbow("Trucks currently open:").red.underline + " page #{i + 1}/#{chunks.length + 1}"
-        Chunks.showChunk(i).each do |truck|
-            Chunks.convert(truck)
-        end;
-        question = prompt.yes?("Would you like to see more food trucks?");
-        if question
-            i+=1;
-        else
-            i = chunks.length;
-        end;
+case response.code
+    when 200
+        all_trucks = AllTrucks.new(JSON[response.body]);
+    when 400
+        puts Rainbow("400 Bad Request. Please check the query syntax.").red;
+        exit
+    when 500
+        puts Rainbow("500 Internal Server Error. The API is likely experiencing issues.").red;
+        exit
+    else
+        puts Rainbow("There was an error with the API.").red;
+        exit
+end
+
+until !all_trucks.more?
+    all_trucks.display
+    question = prompt.yes?("Would you like to see more food trucks?");
+    if !question
+        break
     end;
-end;
+    all_trucks.next
+end
 
 puts Rainbow("Goodbye").red;
