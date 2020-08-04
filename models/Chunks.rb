@@ -15,4 +15,7 @@ class Chunks
         @@all[index]
     end
 
+    def self.convert(object)
+        Truck.new(object['applicant'], object['location']).info
+    end
 end

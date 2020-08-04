@@ -17,3 +17,5 @@ gem 'rainbow'
 
 # Helper for my environment file.
 gem "require_all"
+
+gem 'pry'

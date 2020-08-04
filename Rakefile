@@ -1,9 +1,4 @@
-desc 'prints hello'
-task :hello do
-    puts "Hello world!"
-end
-
-desc 'Run\'s Program'
+desc 'Run program'
 task :start do
     sh 'ruby bin/run.rb'
 end

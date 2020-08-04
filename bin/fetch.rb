@@ -12,14 +12,18 @@ end;
 hour = time.strftime("%H:%M");
 day = time.strftime("%A");
 
-# response = HTTParty.get("https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 <= '#{hour}' AND end24 >= '#{hour}' AND dayofweekstr = '#{day}'");
+response = HTTParty.get("https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 <= '#{hour}' AND end24 >= '#{hour}' AND dayofweekstr = '#{day}'");
 # Test time
-response = HTTParty.get("https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 <= '10:00' AND end24 >= '#{hour}' AND dayofweekstr = '#{day}'");
+# response = HTTParty.get("https://data.sfgov.org/resource/jjew-r69b.json?$where=start24 <= '10:00' AND end24 >= '#{hour}' AND dayofweekstr = '#{day}'");
 
 # Fetch all data from API. Sort alphabetically, grab the necessary key/values, and add that to AllTrucks.
+
+# SWITCH case for different error messages
 if response.code == 200 
-    JSON[response.body].sort_by{ |truck| truck['applicant'].to_s }.each{|truck| AllTrucks.all << truck.slice('applicant', 'location')}
-    AllTrucks.convert
+    # JSON[response.body].sort_by{ |truck| truck['applicant'].to_s }.each{|truck| AllTrucks.all << truck.slice('applicant', 'location')}
+    all_trucks = AllTrucks.new(JSON[response.body]);
+    binding.pry
+    # AllTrucks.convert
 else 
     puts "There was an error with the API. Please try again.";
 end;
