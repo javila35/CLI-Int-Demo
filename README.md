@@ -3,8 +3,8 @@
 # Next Steps
 - [x] Break run.rb into models w/ methods.
 - [x] Finish documentation of current build.
+- [x] Include contributions (gems) in Readme.
 - [ ] Write up about building this into a fleshed out website.
-- [ ] Include contributions (gems) in Readme.
 
 ### Note about API request.
 This CLI operates under the assumption that the API uses Pacific time zone. I did not find any information about this in the documentation. This assumption is based off of the results of my test cases. 
@@ -22,5 +22,4 @@ This CLI operates under the assumption that the API uses Pacific time zone. I di
 - [TTY-Prompt](https://github.com/piotrmurach/tty-prompt) -> Handle user input for displaying more truck information.
 - [HTTParty](https://github.com/jnunemaker/httparty) -> Library to handle API call.
 - [ActiveSupport](https://github.com/rails/rails/tree/master/activesupport) -> Handle time zone conversion
-- [Rainbow](https://github.com/sickill/rainbow) -> Colorizing text output in terminal
 - [RequireAll](https://github.com/jarmo/require_all) -> One liner to require all models in environment file.

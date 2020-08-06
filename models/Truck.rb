@@ -5,6 +5,6 @@ class Truck
     end
 
     def info
-        puts Rainbow("#{@name}").blue + " located at " + Rainbow("#{@location}").green;
+        puts "#{@name} located at #{@location}"
     end
 end
