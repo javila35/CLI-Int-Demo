@@ -1,11 +1,5 @@
 # Food Truck CLI
 
-# Next Steps
-- [x] Break run.rb into models w/ methods.
-- [x] Finish documentation of current build.
-- [x] Include contributions (gems) in Readme.
-- [ ] Write up about building this into a fleshed out website.
-
 ### Note about API request.
 This CLI operates under the assumption that the API uses Pacific time zone. I did not find any information about this in the documentation. This assumption is based off of the results of my test cases. 
 
