@@ -5,7 +5,7 @@ This CLI operates under the assumption that the API uses Pacific time zone. I di
 
 ## Using this CLI
 1. Make sure you have Ruby installed. Find more information [here](https://www.ruby-lang.org/en/documentation/installation/).
-2. Navigate to RedFin directory.
+2. Navigate to CLI-Int-Demo directory.
 3. From your terminal:
     - Run `bundle` to install gem dependencies
     - Run `rake start` to begin CLI
